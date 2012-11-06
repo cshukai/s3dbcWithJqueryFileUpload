@@ -63,19 +63,44 @@ var generateJFileUploadUIs=function(containerID){
 };
 
 
-var send2S3dbUsingJquery=function(s3dbURL,s3db_key,collection_id,rule_id){
+var send2S3dbFmForm=function(s3dbURL,s3db_key,collection_id,rule_id){
   // fileupload is the id of the form which jquery file upload applied to
  $("#fileupload").attr('action', s3dbURL+'/multiupload.php?key='+s3db_key+'&collection_id='+collection_id+'&rule_id='+rule_id+'&format=json');
 
 };
+
+var send2S3dbFmCustomUI=function(inputFileId,filesList,s3dbURL,s3db_key,collection_id,rule_id){
+  // fileupload is the id of the form which jquery file upload applied to
+ $("#"+inputFileId).fileupload({
+ 	url:s3dbURL+'/multiupload.php?key='+s3db_key+'&collection_id='+collection_id+'&rule_id='+rule_id+'&format=json',
+    sequentialUploads: true
+  });
+
+  console.log(filesList);
+  $("#"+inputFileId).fileupload('add', {files: filesList});
+  $("#"+inputFileId).fileupload('send', {files: filesList});
+}
+
+
+var setupFileUploader=function(inputFileId,s3dbURL,collection_id,rule_id){
 
  s3dbc.setDeployment(s3dbURL);
  s3dbc.setJSONP(false);
  s3dbc.login(username, password, function (err, key) {
  	console.log(err);
  	s3db_key=key;
- 	send2S3dbUsingJquery(s3dbURL,s3db_key,collection_id,rule_id);
- });
+    var inputField=document.getElementById(inputFileId);
+    inputField.setAttribute('onchange','send2S3dbFmCustomUI('+'"'+inputFileId+'"'+',this.files,'+'"'+s3dbURL+'"'+','+'"'+s3db_key+'"'+','+'"'+collection_id+'"'+','+rule_id+')'
+     );
+
+   });
+};
+
+
+
+
+
+
 
 
 
