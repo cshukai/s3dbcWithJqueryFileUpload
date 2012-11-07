@@ -96,18 +96,3 @@ var setupFileUploader=function(inputFileId,s3dbURL,collection_id,rule_id){
    });
 };
 
-
-
-
-
-
-
-
-
- ///////////////////////////////////////////////////////////reference//////////////////////////////////////////////////////////////////////
- // not preferred
- //$.get('http://204.232.200.16/uabs3db/uploads.php?key=Gpwyctifs5z28GG&filename=Export_1excelBC.txt&filesize=849.59');
-//"<TABLE><TR><TD>error_code</TD><TD>message</TD><TD>filekey</TD></TR><TR><TD>0</TD><TD>This filekey is to be used instead of key for file transfer, it will expire in 24h. Break the file in base64 encoded fragments, replacing the character '+' with it's URL equivalent '%2b'</TD><TD>tQwJk7dJdyqd</TD></TR></TABLE>"
-
-
-
