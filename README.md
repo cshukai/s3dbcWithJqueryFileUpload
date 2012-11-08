@@ -23,3 +23,5 @@ B. Requirement:
 (B) JQuery File Upload:
 
 an input tag with the value of "type" attribute set as "file"
+
+
