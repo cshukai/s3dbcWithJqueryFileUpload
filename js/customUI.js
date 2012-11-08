@@ -1,3 +1,4 @@
+//setting up  credential
 var s3dbURL='http://204.232.200.16/uabs3db';
 var username='shukai';
 var password='12345';
@@ -81,7 +82,9 @@ var send2S3dbFmCustomUI=function(inputFileId,filesList,s3dbURL,s3db_key,collecti
   $("#"+inputFileId).fileupload('send', {files: filesList});
 }
 
-
+/*
+@purpose: wrapping up the process of application of JQuery file upload
+*/
 var setupFileUploader=function(inputFileId,s3dbURL,collection_id,rule_id){
 
  s3dbc.setDeployment(s3dbURL);
