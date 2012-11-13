@@ -46,10 +46,12 @@ kinomics.s3db_password={};
 kinomics.s3db_collectionId={};
 kinomics.s3db_ruleId={};
 kinomics.s3db_key={};
+kinomics.s3dbc_deleteStatement={};
+kinomics.s3dbc_updateStatement={};
 
-//setting up functions
 kinomics.setupFileUploader={};
-kinomics.login=function(username,password,s3dbURL){
+kinomics.login=function(username,password,s3dbURL,callback){
+     // setting up s3dbc's env
      s3dbc.setDeployment(s3dbURL);
      s3dbc.setJSONP(false);
      s3dbc.login(username, password, function (err, key) {
@@ -57,7 +59,10 @@ kinomics.login=function(username,password,s3dbURL){
      
      kinomics.s3db_key=key;    
      kinomics.setupFileUploader=setupFileUploader;
-     
+     kinomics.s3dbc_deleteStatement=s3dbc.deleteStatement;
+     kinomics.s3dbc_updateStatement= s3dbc.updateStatement;
+
+     callback;
    });
 };
 
@@ -65,39 +70,8 @@ kinomics.login=function(username,password,s3dbURL){
 var collection_id='89';
 var rule_id='99';
 var s3dbURL='http://204.232.200.16/uabs3db';
-var username='shukai';
-var password='12345';
 
 
 
 
-var login=function(usrname,password,callback){
-    s3dbc.setDeployment(s3dbURL);
-    s3dbc.login(username, password, function (err, key) {
-         callback;
-    });
-};
-
-var updateS3dbStatment=function(s3dbURL,s3db_key,collection_id,rule_id){
-    s3dbc.setDeployment(s3dbURL);
-    s3dbc.setJSONP(false);
-    s3dbc.login(username, password, function (err, key) {
-    console.log(err);
-    console.log(key);
-    // todo
-    //s3dbc.updateStatement(string statementId, string value, (err, array results) callback)
-};
-
-// var deleteS3dbStatement=function(s3dbURL,statementId,callback){
-//     s3dbc.setDeployment(s3dbURL);
-//     s3dbc.setJSONP(false);
-//     s3dbc.login(username, password, function (err, key) {
-//     console.log(err);
-//     console.log(key);
-//     s3dbc.deleteStatement(statementId,callback);
-//        console.log(err);
-//        console.log(results);
-//    });
-
-// };
 
