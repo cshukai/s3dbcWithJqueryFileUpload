@@ -59,6 +59,7 @@ kinomics.login=function(username,password,s3dbURL,callback){
      
      //setting up function for file manipulation
      kinomics.s3db_key=key;    
+     kinomics.s3db_selectStatementsByRuleAndItem=s3dbc.selectStatementsByRuleAndItem; 
      kinomics.setupFileUploader=setupFileUploader;
      kinomics.s3dbc_deleteStatement=s3dbc.deleteStatement;
      kinomics.s3dbc_updateStatement= s3dbc.updateStatement;
