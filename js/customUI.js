@@ -25,7 +25,7 @@ var send2S3dbFmCustomUI=function(inputFileId,filesList,s3dbURL,s3db_key,collecti
 @dependencies: function send2S3dbFmCustomUI
 
 */
-var setupFileUploader=function(inputFileId,collection_id,rule_id){
+var setupFileUploader=function(inputFileId,s3db_key,collection_id,rule_id){
 
     var inputField=document.getElementById(inputFileId);
     inputField.setAttribute('onchange','send2S3dbFmCustomUI('+'"'+inputFileId+'"'+',this.files,'+'"'+ s3dbURL+'"'+','+'"'+s3db_key+'"'+','+'"'+collection_id+'"'+','+rule_id+')'
@@ -57,6 +57,7 @@ kinomics.login=function(username,password,s3dbURL,callback){
      s3dbc.login(username, password, function (err, key) {
      console.log(err);
      
+     //setting up function for file manipulation
      kinomics.s3db_key=key;    
      kinomics.setupFileUploader=setupFileUploader;
      kinomics.s3dbc_deleteStatement=s3dbc.deleteStatement;
