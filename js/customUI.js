@@ -119,7 +119,7 @@ kinomics.login=function(username,password,s3dbURL,callback){
    });
 };
 
-// get the listing  file function here ......
+
 var collection_id='89';
 var rule_id='99';
 var s3dbURL='http://204.232.200.16/uabs3db';
