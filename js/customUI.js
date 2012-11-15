@@ -99,9 +99,8 @@ kinomics.s3db_ruleId={};
 kinomics.s3db_key={};
 kinomics.s3dbc_deleteStatement={};
 kinomics.s3dbc_updateStatement={};
-kinomics.displayFileInfoByCollectionAndRule={};
+kinomics.getFileMetaByRuleIdInTheCollection={};
 kinomics.setupFileUploader={};
-kinomics.fileInfo={};
 kinomics.login=function(username,password,s3dbURL,callback){
      // setting up s3dbc's env
      s3dbc.setDeployment(s3dbURL);
