@@ -1,15 +1,5 @@
-///////////////////////////////////////////////////////for adding file to s3db////////////////////////////////////////////
-
-var send2S3dbFmForm=function(s3dbURL,s3db_key,collection_id,rule_id){
-  // fileupload is the id of the form which jquery file upload applied to
- $("#fileupload").attr('action', s3dbURL+'/multiupload.php?key='+s3db_key+'&collection_id='+collection_id+'&rule_id='+rule_id+'&format=json');
-
-};
-
-
 
 var send2S3dbFmCustomUI=function(inputFileId,filesList,s3dbURL,s3db_key,collection_id,rule_id){
-  // fileupload is the id of the form which jquery file upload applied to
  $("#"+inputFileId).fileupload({
   url:s3dbURL+'/multiupload.php?key='+s3db_key+'&collection_id='+collection_id+'&rule_id='+rule_id+'&format=json',
     sequentialUploads: true
@@ -101,6 +91,7 @@ kinomics.s3dbc_deleteStatement={};
 kinomics.s3dbc_updateStatement={};
 kinomics.getFileMetaByRuleIdInTheCollection={};
 kinomics.setupFileUploader={};
+
 kinomics.login=function(username,password,s3dbURL,callback){
      // setting up s3dbc's env
      s3dbc.setDeployment(s3dbURL);
@@ -120,6 +111,8 @@ kinomics.login=function(username,password,s3dbURL,callback){
 };
 
 
+
+// example for testing
 var collection_id='89';
 var rule_id='99';
 var s3dbURL='http://204.232.200.16/uabs3db';
