@@ -25,3 +25,16 @@ B. Requirement:
 an input tag with the value of "type" attribute set as "file"
 
 
+C. Doc
+
+
+(A) In html file
+
+
+
+<script src="yourPath/js/customUI.js"></script>
+
+
+(B) Every function is under the kinomics namespace  and accessible  after logging to S3DB 
+
+
