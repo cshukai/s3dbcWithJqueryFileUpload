@@ -11,13 +11,13 @@ var send2S3dbFmCustomUI=function(inputFileId,filesList,s3dbURL,s3db_key,collecti
 }
 
 /*
+    var inputField=document.getElementBy
 @purpose: wrapping up the process of application of JQuery file upload
 @dependencies: function send2S3dbFmCustomUI
 
 */
 var setupFileUploader=function(inputFileId,s3db_key,collection_id,rule_id){
-
-    var inputField=document.getElementById(inputFileId);
+Id(inputFileId);
     inputField.setAttribute('onchange','send2S3dbFmCustomUI('+'"'+inputFileId+'"'+',this.files,'+'"'+ s3dbURL+'"'+','+'"'+s3db_key+'"'+','+'"'+collection_id+'"'+','+rule_id+')'
      );
    
@@ -74,6 +74,39 @@ var displayFileInfoByCollectionAndRule=function(collectionID,ruleID){
  };
 
 
+var listS3dbProject_sparql=function(){
+    var sparql_query;
+    var sparql_template= [   
+                           "prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>",
+                           "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",                          
+                           "prefix owl:<http://www.w3.org/2002//07/owl#>",                       
+                           "prefix dc:<http://purl.org/dc/ele07/owl#>",
+                           "prefix dc:<http://purl.org/dc/elements/1.1/>",
+                           "prefix dcterms:<http://purl.org/dc/terms/>",
+                           "prefix foaf:<http://xmlns.com/foaf/0.1/>",
+                           "prefix fti:<http://franz.com/ns/allegrograph/2.2/textindex/>",
+                            "prefix skos:<http://www.w3.org/2004/02/skos/core#>",
+                            "prefix s3db:<http://204.232.200.16/core.owl#>",
+                           "SELECT  ?project WHERE { ",
+                           "?project  rdf:type "+"\'"+"s3db:project"+"\'"+"." ,                                      
+                           "}"
+                         ];
+
+    var sparql_query=sparql_template.join(" ");
+    return sparql_query;
+};
+
+
+var sparqlFectch=function(backend,sparqlQuery){
+    if(backend=="s3db"){
+      s3dbc.sparqlQuery(sparqlQuery, function(err,results){
+           //callback(results);
+           console.log(err);
+           console.log(results);
+      });
+    }
+};
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -106,6 +139,7 @@ kinomics.login=function(username,password,s3dbURL,callback){
      kinomics.s3dbc_deleteStatement=s3dbc.deleteStatement;
      kinomics.s3dbc_updateStatement= s3dbc.updateStatement;
      kinomics.getFileMetaByRuleIdInTheCollection=getFileMetaByRuleIdInTheCollection; 
+     kinomics.sparqlFectch=sparqlFectch;
      callback;
    });
 };
