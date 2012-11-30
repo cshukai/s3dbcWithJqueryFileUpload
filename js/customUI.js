@@ -76,6 +76,7 @@ var displayFileInfoByCollectionAndRule=function(collectionID,ruleID){
 
 var listS3dbProject_sparql=function(){
     var sparql_query;
+    //permission issue 
     var sparql_template= [   
                            "prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>",
                            "prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>",                          
@@ -86,9 +87,11 @@ var listS3dbProject_sparql=function(){
                            "prefix foaf:<http://xmlns.com/foaf/0.1/>",
                            "prefix fti:<http://franz.com/ns/allegrograph/2.2/textindex/>",
                             "prefix skos:<http://www.w3.org/2004/02/skos/core#>",
-                            "prefix s3db:<http://204.232.200.16/core.owl#>",
-                           "SELECT  ?project WHERE { ",
-                           "?project  rdf:type "+"\'"+"s3db:project"+"\'"+"." ,                                      
+                            "prefix s3db:<http://www.s3db.org/core#> ",
+                           "SELECT  ?GenomicCharacterization WHERE { ",
+                           "?GenomicCharacterization rdf:type :C89 . " , 
+                           // not  working with 
+                           // "??GenomicCharacterization   rdf:type s3db:project . " ,                                       
                            "}"
                          ];
 
